@@ -15,5 +15,15 @@ steps:
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
